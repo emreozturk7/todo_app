@@ -18,7 +18,7 @@ function Login() {
     })
     return (
         <div className="min-w-screen min-h-screen overflow-x-hidden">
-            <form onSubmit={formik.handleSubmit} className="max-w-lg mx-auto bg-white rounded shadow-lg mt-7 p-3">
+            <form onSubmit={formik.handleSubmit} className="max-w-lg mx-auto bg-white rounded shadow-lg mt-8 p-3">
                 <h1 className='text-3xl mb-3 text-center'>Login</h1>
 
                 <div className='mb-4'>

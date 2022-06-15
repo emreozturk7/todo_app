@@ -1,66 +1,52 @@
 import React from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
-export default function Menu({ fixed }) {
-    const [menuOpen, setMenuOpen] = React.useState(false);
+function Header() {
+    const { isAuthenticated } = useAuth();
+
     return (
-        <>
-            <div className="flex flex-wrap py-2">
-                <div className="w-full px-4">
-                    <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 rounded">
-                        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-                            <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-                                <a
-                                    className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                                    href="#pablo"
-                                >
-                                    pink Starter Menu
-                                </a>
-                                <button
-                                    className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                                    type="button"
-                                    onClick={() => setMenuOpen(!menuOpen)}
-                                >
-                                    <i className="fas fa-bars"></i>
-                                </button>
-                            </div>
+        <div className="flex flex-wrap">
+            <div className="w-full">
+                <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-orange-500">
+                    <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+                        <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
                             <div
-                                className={
-                                    "lg:flex flex-grow items-center" +
-                                    (menuOpen ? " flex" : " hidden")
-                                }
-                                id="example-navbar-info"
-                            >
-                                <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                                    <li className="nav-item">
-                                        <a
-                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                            href="#pablo"
-                                        >
-                                            Discover
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a
-                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                            href="#pablo"
-                                        >
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a
-                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                            href="#pablo"
-                                        >
-                                            Settings
-                                        </a>
-                                    </li>
-                                </ul>
+                                className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
+                                <Link to="/" className='button-type'>TODO APP</Link>
                             </div>
+
                         </div>
-                    </nav>
-                </div>
+                        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                            <li className="nav-item">
+                                <div
+                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                    <Link to="/" className='button-type'>HOME</Link>
+                                </div>
+                            </li>
+                            {
+                                !isAuthenticated ?
+                                    <li className="nav-item">
+                                        <div
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                            <Link to="/login" className='button-type'>LOGIN</Link>
+                                        </div>
+                                    </li>
+                                    :
+                                    <li className="nav-item">
+                                        <div
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                                            <Link to="/mytodos" className='button-type'>MY TODOS</Link>
+                                        </div>
+                                    </li>
+                            }
+                        </ul>
+                    </div>
+
+                </nav>
             </div>
-        </>
+        </div>
     );
 }
+
+export default Header;

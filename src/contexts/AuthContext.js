@@ -1,22 +1,18 @@
 import React, { useContext, useState, createContext } from 'react';
-import { login } from '../services/AuthService';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [email] = useState('');
     const [password] = useState('');
 
     const submitLogin = (email, password) => {
-        const data = {
-            email: email,
-            password: password,
-        };
-        
-        login(data.email, data.password);
+        if ("deneme@deneme.com" === email && "deneme1234" === password) {
+            setIsAuthenticated(!isAuthenticated);
+        }
     };
-
 
     return (
         <AuthContext.Provider
@@ -24,6 +20,7 @@ const AuthProvider = ({ children }) => {
                 submitLogin,
                 email,
                 password,
+                isAuthenticated,
             }}
         >
             {children}
