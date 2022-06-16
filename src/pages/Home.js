@@ -1,13 +1,16 @@
 import React from 'react';
 import AddTodo from '../components/AddTodo';
-import ListItem from '../components/Card';
-
+import Todos from '../components/Todos';
+import { useTodo } from '../contexts/TodoContext';
 function Home() {
+
+    const { todos } = useTodo();
 
     return (
         <div>
-            <AddTodo></AddTodo>
-            <ListItem></ListItem>
+            <AddTodo todo={todos} />
+
+            <Todos />
         </div>
     );
 }
