@@ -15,7 +15,8 @@ function Login() {
             submitLogin(values.email, values.password);
         },
         validationSchema: LoginScheme,
-    })
+    });
+
     return (
         <div className="min-w-screen min-h-screen overflow-x-hidden">
             <form onSubmit={formik.handleSubmit} className="max-w-lg mx-auto bg-white rounded shadow-lg mt-8 p-3">

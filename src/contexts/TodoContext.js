@@ -8,6 +8,7 @@ const TodoProvider = ({ children }) => {
     const [state, dispatch] = useReducer(todoReducer, {
         todos: [],
         todo: '',
+        user: '',
         completed: false,
         search: '',
         onlyMe: false,

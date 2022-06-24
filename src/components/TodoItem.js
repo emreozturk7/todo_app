@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 function TodoItem({ todo }) {
     return (
         <article className="flex items-start space-x-6 p-6">
@@ -11,7 +13,7 @@ function TodoItem({ todo }) {
                     </div>
                     <div className="flex-none w-full font-small">
                         <dt className="sr-only">Cast</dt>
-                        <dd className="text-slate-400">12:35 - 24:08:2022</dd>
+                        <dd className="text-slate-400">{todo.time}</dd>
                     </div>
 
 
@@ -32,4 +34,4 @@ function TodoItem({ todo }) {
     )
 }
 
-export default TodoItem;
+export default memo(TodoItem);

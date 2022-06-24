@@ -1,16 +1,5 @@
-/* eslint-disable default-case */
-export default function reducer(state, action) {
+function reducer(state, action) {
     switch (action.type) {
-        case 'UPDATE_TODO':
-            return {
-                ...state,
-                todo: action.value
-            }
-        case 'UPDATE_COMPLETED':
-            return {
-                ...state,
-                completed: action.value
-            }
 
         case 'ADD_TODO':
             return {
@@ -20,11 +9,25 @@ export default function reducer(state, action) {
                     ...state.todos,
                     {
                         title: action.todo,
-                        completed: state.completed,
-                        userId: action.userId
+                        time: new Date().toLocaleString(),
+                        user: action.user,
+                        completed: false,
                     }
                 ]
             }
+
+        case 'UPDATE_TODO':
+            return {
+                ...state,
+                todo: action.value
+            }
+
+        case 'UPDATE_COMPLETED':
+            return {
+                ...state,
+                completed: action.value
+            }
+
         case 'DELETE_TODO':
             return {
                 ...state,
@@ -32,16 +35,19 @@ export default function reducer(state, action) {
                     ...state.todos.filter((todo, index) => index !== action.index)
                 ]
             }
+
         case 'UPDATE_ONLY_ME':
             return {
                 ...state,
                 onlyMe: !state.onlyMe
             }
+
         case 'UPDATE_FILTER_COMPLETED':
             return {
                 ...state,
                 filterCompleted: action.value
             }
+
         case 'TOGGLE_TODO':
             return {
                 ...state,
@@ -54,6 +60,7 @@ export default function reducer(state, action) {
                     })
                 ]
             }
+
         case 'UPDATE_TODO_ITEM':
             return {
                 ...state,
@@ -72,5 +79,9 @@ export default function reducer(state, action) {
                 ...state,
                 search: action.value
             }
+        default:
+            return true;
     }
 }
+
+export default reducer;
