@@ -10,7 +10,7 @@ function reducer(state, action) {
                     {
                         title: action.todo,
                         time: new Date().toLocaleString(),
-                        user: action.user,
+                        user: localStorage.getItem('name'),
                         completed: false,
                     }
                 ]

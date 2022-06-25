@@ -25,18 +25,22 @@ function Header() {
                                 </div>
                             </li>
                             {
-                                !isAuthenticated ?
-                                    <li className="nav-item">
+                                isAuthenticated
+                                    ?
+                                    <li className="nav-item flex flex-col lg:flex-row list-none lg:ml-auto">
                                         <div
                                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-                                            <Link to="/login" className='button-type'>LOGIN</Link>
+                                            <Link to="/mytodos" className='button-type'>MY TODOS</Link>
+                                        </div>
+                                        <div className="px-3 py-2 flex items-center text-xs font-bold leading-snug text-white hover:opacity-75">
+                                            <Link to="/myaccount" className='button-type'>{localStorage.getItem('name')}</Link>
                                         </div>
                                     </li>
                                     :
                                     <li className="nav-item">
                                         <div
                                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
-                                            <Link to="/mytodos" className='button-type'>MY TODOS</Link>
+                                            <Link to="/login" className='button-type'>LOGIN</Link>
                                         </div>
                                     </li>
                             }

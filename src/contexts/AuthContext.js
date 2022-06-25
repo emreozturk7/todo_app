@@ -5,6 +5,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
     const [isAuthenticated] = useState(localStorage.getItem('isAuthenticated'));
+    
     const [email] = useState('');
     const [password] = useState('');
 
@@ -12,12 +13,14 @@ const AuthProvider = ({ children }) => {
         if ("emreozturk@hotmail.com" === email && "emre1234" === password) {
             setTimeout(() => {
                 localStorage.setItem('isAuthenticated', true);
+                localStorage.setItem('name', 'emreozturk@hotmail.com');
                 window.location.href = '/';
             }, 100);
         }
-        if ("emre@hotmail.com" === email && "emre1234" === password) {
+        if ("tayfunerbilen@hotmail.com" === email && "tayfun1234" === password) {
             setTimeout(() => {
                 localStorage.setItem('isAuthenticated', true);
+                localStorage.setItem('name', 'tayfunerbilen@hotmail.com');
                 window.location.href = '/';
             }, 100);
         }

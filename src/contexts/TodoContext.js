@@ -28,7 +28,28 @@ const TodoProvider = ({ children }) => {
             type: 'UPDATE_TODO',
             value: e.target.value
         })
-    }, [])
+    }, []);
+
+    const deleteTodo = useCallback(index => {
+        dispatch({
+            type: 'DELETE_TODO',
+            index
+        })
+    }, []);
+
+    const updateCompleted = useCallback(e => {
+        dispatch({
+            type: 'UPDATE_COMPLETED',
+            value: e.target.checked
+        })
+    }, []);
+
+    const toggleTodo = useCallback(index => {
+        dispatch({
+            type: 'TOGGLE_TODO',
+            index
+        })
+    }, []);
 
     return (
         <TodoContext.Provider
@@ -36,6 +57,9 @@ const TodoProvider = ({ children }) => {
                 submitHandle,
                 state,
                 updateTodo,
+                deleteTodo,
+                updateCompleted,
+                toggleTodo,
             }}
         >
             {children}

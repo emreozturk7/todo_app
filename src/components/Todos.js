@@ -2,7 +2,6 @@ import TodoItem from "./TodoItem";
 import { useTodo } from "../contexts/TodoContext";
 
 function Todos() {
-
     const { state } = useTodo();
 
     return (
@@ -11,7 +10,7 @@ function Todos() {
                 state.todos.length > 0 ? (
                     <ul className="bg-white dark:bg-transparent">
                         {
-                            state.todos.map((todo, index) => <TodoItem todo={todo} key={index} />)
+                            state.todos.map((todo, index) => <TodoItem todo={todo} key={index} index={index} />)
                         }
                     </ul>
                 ) : (
