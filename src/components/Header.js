@@ -1,10 +1,9 @@
 import React from "react";
-import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Header() {
     const { isAuthenticated } = useAuth();
-
     return (
         <div className="flex flex-wrap">
             <div className="w-full">
@@ -33,7 +32,7 @@ function Header() {
                                             <Link to="/mytodos" className='button-type'>MY TODOS</Link>
                                         </div>
                                         <div className="px-3 py-2 flex items-center text-xs font-bold leading-snug text-white hover:opacity-75">
-                                            <Link to="/myaccount" className='button-type'>{localStorage.getItem('name')}</Link>
+                                            <Link to="/myaccount" className='button-type'>{localStorage.getItem("user")}</Link>
                                         </div>
                                     </li>
                                     :
